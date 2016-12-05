@@ -1,0 +1,12 @@
+[
+    {
+        "uniformName": "iZoom",
+        "uniformInfo": "zoom level -3.0 to 3.0",
+        "uniformValue": 0.5
+    },
+    {
+        "uniformName": "iExposure",
+        "uniformInfo": "exposure 0.0 to 3.0",
+        "uniformValue": 1.5
+    }
+]

@@ -5,39 +5,39 @@ var MainInterface = React.createClass({
   getInitialState: function() {
     return {
       title: 'Uniforms',
-      data: [
-        {
-          "uniformName": "iZoom",
-          "uniformInfo": "zoom level -3.0 to 3.0",
-          "uniformValue": 0.5
-        },
-        {
-          "uniformName": "iExposure",
-          "uniformInfo": "exposure 0.0 to 3.0",
-          "uniformValue": 1.5
-        }
-      ],
+      uniforms: [],
       show: true
     } //return
   }, //getInitialState
-
+  componentDidMount: function() {
+    this.serverRequest = $.get('./js/uniforms.json', function(result) {
+      var tempUniforms = result;
+      this.setState({
+        uniforms: tempUniforms
+      }); //setState
+    }.bind(this));
+  },
+  componentWillUnmount: function() {
+    this.serverRequest.abort();
+  },
   render: function() {
-    
+    var filteredUniforms = this.state.uniforms;
+    filteredUniforms = filteredUniforms.map(function(item, index) {
+      return (
+        <li className="uniform-info media-body" key={index}>
+          <div className="uniform-head">
+            <span className="uniform-name">{this.state.uniforms[index].uniformName}</span>
+            <span className="uniform-info pull-right">{this.state.uniforms[index].uniformInfo}</span>
+          </div>
+        </li>
+      ) //return
+    }.bind(this)); //filteredUniforms.map
     return (
       <div className="interface">
-        <h1>{this.state.title}</h1>
-        <div className="item-list media-list">
-          <ul className="item-list media-list">
-            <li className="uniform-info media-body">
-              <div className="uniform-head">
-                <span className="uniform-name">{this.state.data[0].uniformName}</span>
-                <span className="uniform-info pull-right">{this.state.data[0].uniformInfo}</span>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <h1>{this.state.title}</h1>       
+        <ul className="item-list media-list">{filteredUniforms}</ul>
       </div>
-    ) // return
+    ) //return
   } //render
 }); //MainInterface
 

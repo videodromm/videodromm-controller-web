@@ -6,7 +6,8 @@ body{
   font-weight: 300;
   font-size: 2em;
   position: relative;
-  background-color: #110011;
+  background-color: #000;
+  color: #ccc;
   font-size: 16px;
 }
 
@@ -126,22 +127,15 @@ footer .navbar-nav>li a {
 }
 
 .item-list .uniform-info {
-  font-size: 1.7em;
+  font-style: italic;
 }
 
 .item-list .label-item {
   font-weight: 600;
-  color: #667B82;
+  color: #B67B82;
 }
 
 .item-list .uniform-delete {
   font-size: 1.2em;
 }
 
-.item-list .apt-date {
-  font-style: italic;
-}
-
-.item-list .apt-notes {
-
-}

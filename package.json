@@ -6,7 +6,24 @@
     "type": "git",
     "url": "https://github.com/videodromm/videodromm-controller-web.git"
   },
-  "author": "Bruce Lane",
+    "author": {
+    "name": "Bruce Lane,Josep Arpi",
+    "email": "bruce@batchass.fr,josep.arpi@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/videodromm/videodromm-controller-web/issues"
+  },
+  "dependencies": {
+    "babel": "^5.8.29",
+    "babel-runtime": "5.8.29",
+    "codemirror": "5.8.0",
+    "mocha": "^3.1.2",
+    "nodemon": "^1.11.0",
+    "uuid": "^2.0.3",
+    "winston": "^2.2.0",
+    "ws": "^1.1.1",
+    "xhr": "^2.2.0"
+  },
   "devDependencies": {
     "gulp": "^3.8.8",
     "gulp-browserify": "^0.5.1",

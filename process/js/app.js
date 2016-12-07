@@ -2,24 +2,9 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 var Keyboard = require('./Keyboard');
+var Controls = require('./Controls');
 var nx = require('./nxOnLoad');
  
-/*var Keyboard = React.createClass({
-  //all nexusUI elements need to use data-nx with React.
-  //be sure to change the manager.prototype.transform function
-  componentWillMount: function() {
-    console.log('nxSynthOnLoad from Keyboard');
-    
-  },
-  render: function(){
-    return(
-      <div className='keyboard'>
-        <canvas id="keyboard" className='keyboard__ui' data-nx='keyboard' ></canvas>
-        <canvas data-nx="dial"></canvas>
-      </div>
-    );
-  }
-});*/
 var MainInterface = React.createClass({
   getInitialState: function() {
     return {
@@ -59,7 +44,7 @@ var MainInterface = React.createClass({
       <div className="interface">
         <h1>{this.state.title}</h1>       
         <ul className="item-list media-list">{filteredUniforms}</ul>
-        <Keyboard />
+        <Controls />
       </div>
     ) //return
   } //render

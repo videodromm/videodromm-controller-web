@@ -7,6 +7,7 @@ var Controls = require('./Controls');
 var UniformList = require('./UniformList');
  
 var nx = require('./nxOnLoad');
+var ws = new WebSocket('ws://localhost:8088');
 
 var MainInterface = React.createClass({
   getInitialState: function() {
@@ -29,6 +30,10 @@ var MainInterface = React.createClass({
     console.log('nx' + nx);
   }, //componentWillMount
   componentDidMount: function() {
+    ws.onopen = () => {
+      // connection opened
+      ws.send('something'); // send a message
+    };
     this.serverRequest = $.get('./js/uniforms.json', function(result) {
       var tempUniforms = result;
       this.setState({

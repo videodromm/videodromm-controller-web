@@ -1,13 +1,13 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var _ = require('lodash');
+var _ = require('lodash'); // useless for now
 
 var Keyboard = require('./Keyboard');
 var Controls = require('./Controls');
 var UniformList = require('./UniformList');
 
 var nx = require('./nxOnLoad');
- 
+
 var MainInterface = React.createClass({
   getInitialState: function() {
     return {
@@ -40,14 +40,14 @@ var MainInterface = React.createClass({
     this.serverRequest.abort();
   }, //componentWillUnmount
   resetUniform: function(item) {
-    console.log('onReset:' + item.uniformName + ' was ' + item.uniformValue);
+    console.log('resetUniform:' + item.uniformName + ' was ' + item.uniformValue);
     item.uniformValue = item.defaultValue;
     var allUniformList = this.state.uniforms;
     console.log('reset to:' + item.uniformValue);
     this.setState({
         uniforms: allUniformList
       }); //setState
-  }, //onReset
+  }, //resetUniform
   render: function() {
     var filteredUniforms = this.state.uniforms;
     filteredUniforms = filteredUniforms.map(function(item, index) {

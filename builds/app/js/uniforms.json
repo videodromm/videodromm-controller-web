@@ -1,14 +1,18 @@
 [
     {
         "uniformName": "iZoom",
-        "uniformInfo": "zoom level -3.0 to 3.0",
+        "uniformInfo": "zoom level",
         "uniformValue": 0.5,
+        "uniformMinValue": -3.0,
+        "uniformMaxValue": 3.0,
         "defaultValue": 1.0
     },
     {
         "uniformName": "iExposure",
-        "uniformInfo": "exposure 0.0 to 3.0",
+        "uniformInfo": "exposure",
         "uniformValue": 1.5,
-        "defaultValue": 1.0
+        "uniformMinValue": 0.0,
+        "uniformMaxValue": 3.0,
+       "defaultValue": 1.0
     }
 ]

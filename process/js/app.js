@@ -5,7 +5,7 @@ var _ = require('lodash'); // useless for now
 var Keyboard = require('./Keyboard');
 var Controls = require('./Controls');
 var UniformList = require('./UniformList');
-
+ 
 var nx = require('./nxOnLoad');
 
 var MainInterface = React.createClass({
@@ -48,6 +48,17 @@ var MainInterface = React.createClass({
         uniforms: allUniformList
       }); //setState
   }, //resetUniform
+  changeUniform: function(item, value) {
+    console.log('changeUniform:' + item.uniformName + ' was ' + item.uniformValue + ' to ' + value);
+    if(item.uniformValue !== value) {
+      item.uniformValue = value;
+      var allUniformList = this.state.uniforms;
+      console.log('changed to:' + item.uniformValue);
+      this.setState({
+        uniforms: allUniformList
+      }); //setState
+    } //if
+  }, //changeUniform
   render: function() {
     var filteredUniforms = this.state.uniforms;
     filteredUniforms = filteredUniforms.map(function(item, index) {
@@ -55,6 +66,7 @@ var MainInterface = React.createClass({
         <UniformList key = {index}
           singleItem = {item}
           whichUniform = {item}
+          onChange = {this.changeUniform}
           onReset = {this.resetUniform} />
       ) //return
     }.bind(this)); //filteredUniforms.map

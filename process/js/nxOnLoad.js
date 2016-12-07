@@ -1,5 +1,7 @@
 var keyboard = require('./Keyboard');
-var nx = {};;
+var controls = require('./Controls');
+
+var nx = {};
 nx.onload = function(){
   console.log('nx loaded');
   keyboard.on('*', function(data){
@@ -11,6 +13,11 @@ nx.onload = function(){
 
     } else if (data.on === 0) {
     }
+  });
+  var z;
+  controls.on('*', function(data){
+    z = Math.round(data.value);
+    console.log('z' + z);
   });
 }
 

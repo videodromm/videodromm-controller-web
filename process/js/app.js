@@ -3,6 +3,8 @@ var ReactDOM = require('react-dom');
 
 var Keyboard = require('./Keyboard');
 var Controls = require('./Controls');
+var UniformList = require('./UniformList');
+
 var nx = require('./nxOnLoad');
  
 var MainInterface = React.createClass({
@@ -15,6 +17,14 @@ var MainInterface = React.createClass({
   }, //getInitialState
   componentWillMount: function(){
     nx;
+    nx.onload = function(){
+     console.log('nx onload');
+     var z;
+     iZoom.on('*', function(data){
+        z = Math.round(data.value);
+        console.log('z' + z);
+      });
+   }
     console.log('nx' + nx);
   }, //componentWillMount
   componentDidMount: function() {
@@ -32,12 +42,8 @@ var MainInterface = React.createClass({
     var filteredUniforms = this.state.uniforms;
     filteredUniforms = filteredUniforms.map(function(item, index) {
       return (
-        <li className="uniform-info media-body" key={index}>
-          <div className="uniform-head">
-            <span className="uniform-name">{this.state.uniforms[index].uniformName}</span>
-            <span className="uniform-info pull-right">{this.state.uniforms[index].uniformInfo}</span>
-          </div>
-        </li>
+        <UniformList key = {index}
+          singleItem = {item} />
       ) //return
     }.bind(this)); //filteredUniforms.map
     return (

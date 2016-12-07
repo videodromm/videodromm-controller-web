@@ -32,7 +32,7 @@ var UniformList = React.createClass({
         </div>
         <div className="uniform-body">
           <span className="uniform-name">{this.props.singleItem.uniformValue}</span>
-          <input type="range" step="0.01" onChange={this.handleChange} min={this.props.singleItem.uniformMinValue} max={this.props.singleItem.uniformMaxValue} />
+          <input type="range" defaultValue={this.props.singleItem.uniformValue} step="0.01" onChange={this.handleChange} min={this.props.singleItem.uniformMinValue} max={this.props.singleItem.uniformMaxValue} />
           <span className="uniform-info pull-right">{this.props.singleItem.uniformInfo}</span>
         </div>
       </li>

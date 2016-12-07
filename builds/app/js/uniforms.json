@@ -2,7 +2,7 @@
     {
         "uniformName": "iZoom",
         "uniformInfo": "zoom level",
-        "uniformValue": 0.5,
+        "uniformValue": -2.5,
         "uniformMinValue": -3.0,
         "uniformMaxValue": 3.0,
         "defaultValue": 1.0

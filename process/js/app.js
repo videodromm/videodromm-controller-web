@@ -34,6 +34,20 @@ var MainInterface = React.createClass({
       // connection opened
       ws.send('something'); // send a message
     };
+    ws.onmessage = (e) => {
+      // a message was received
+      console.log(e.data);
+    };
+
+    ws.onerror = (e) => {
+      // an error occurred
+      console.log(e.message);
+    };
+
+    ws.onclose = (e) => {
+      // connection closed
+      console.log(e.code, e.reason);
+    };
     this.serverRequest = $.get('./js/uniforms.json', function(result) {
       var tempUniforms = result;
       this.setState({

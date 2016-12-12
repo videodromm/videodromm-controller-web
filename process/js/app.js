@@ -6,7 +6,7 @@ var Keyboard = require('./Keyboard');
 var Controls = require('./Controls');
 var UniformList = require('./UniformList');
  
-var nx = require('./nxOnLoad');
+//var nx = require('./nxOnLoad');
 var ws = new WebSocket('ws://localhost:8088');
 
 var MainInterface = React.createClass({
@@ -17,19 +17,19 @@ var MainInterface = React.createClass({
       show: true
     } //return
   }, //getInitialState
-  componentWillMount: function(){
-    nx;
+  componentDidMount: function() {
+    //nx;
+    console.log('nx' + nx);
+
     nx.onload = function(){
      console.log('nx onload');
-     var z;
      iZoom.on('*', function(data){
-        z = Math.round(data.value);
-        console.log('z' + z);
+        ws.send('{"params" :[{"name" : 12,"value" :'+data.value+"}]}");
       });
-   }
-    console.log('nx' + nx);
-  }, //componentWillMount
-  componentDidMount: function() {
+      iExposure.on('*', function(data){
+        ws.send('{"params" :[{"name" : 14,"value" :'+data.value+"}]}");
+      });
+   };
     ws.onopen = () => {
       // connection opened
       ws.send('something'); // send a message

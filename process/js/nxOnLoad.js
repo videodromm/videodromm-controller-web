@@ -1,7 +1,7 @@
 var keyboard = require('./Keyboard');
 var controls = require('./Controls');
 
-var nx = {};
+/*var nx = {};
 nx.onload = function(){
   console.log('nx loaded');
   keyboard.on('*', function(data){
@@ -19,6 +19,6 @@ nx.onload = function(){
     z = Math.round(data.value);
     console.log('z' + z);
   });
-}
+}*/
 
-module.exports = nx;
+module.exports = controls;

@@ -1,5 +1,5 @@
 var React = require('react');
-var nx = require('./nxOnLoad');
+//var nx = require('./nxOnLoad');
 
 class Controls extends React.Component {
   //all nexusUI elements need to use data-nx with React.
@@ -9,9 +9,9 @@ class Controls extends React.Component {
     console.log('ctrls ctor');
 
   }
-  componentWillMount(){
-    nx;
-    console.log('nx' + nx);
+  componentDidMount(){
+    //nx;
+    /*console.log('nx:' + nx);
     nx.onload = function(){
      console.log('nx onload');
      var z;
@@ -19,8 +19,8 @@ class Controls extends React.Component {
         z = Math.round(data.value);
         console.log('z' + z);
       });
-   }
-  } //componentWillMount
+   }*/
+  } //componentDidMount
   render(){
     return(
       <div className='controls'>

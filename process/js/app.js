@@ -6,8 +6,7 @@ var Keyboard = require('./Keyboard');
 var Controls = require('./Controls');
 var UniformList = require('./UniformList');
  
-//var nx = require('./nxOnLoad');
-var ws = new WebSocket('ws://localhost:8088');
+var ws = new WebSocket('ws://13.93.86.117:8088');
 
 var MainInterface = React.createClass({
   getInitialState: function() {
@@ -22,21 +21,38 @@ var MainInterface = React.createClass({
     console.log('nx' + nx);
 
     nx.onload = function(){
-     console.log('nx onload');
+     console.log('nx onload'+ ws);
+     nx.colorize("#220022");
+     nx.colorize("border", "#FF0000");
+     nx.colorize("border", "#660077");
      iZoom.on('*', function(data){
+       console.log('iZoom ' + ws + ' val:' + data.value);
+       ws.send('{"params" :[{"name" : 12,"value" :'+data.value+"}]}");
+      });
+     iZoom1.on('*', function(data){
+       console.log('iZoom1'+ ws + ' val:' + data.value);
         ws.send('{"params" :[{"name" : 12,"value" :'+data.value+"}]}");
       });
       iExposure.on('*', function(data){
+       console.log('iExposure'+ ws + ' val:' + data.value);
+        ws.send('{"params" :[{"name" : 14,"value" :'+data.value+"}]}");
+      });
+      iExposure1.on('*', function(data){
+       console.log('iExposure1'+ ws + ' val:' + data.value);
         ws.send('{"params" :[{"name" : 14,"value" :'+data.value+"}]}");
       });
    };
     ws.onopen = () => {
       // connection opened
-      ws.send('something'); // send a message
+      ws.send('controller ready'); // send a message
+      console.log('ws.onopen' + nx + "  " + iExposure1);
+      iExposure.val = 0.5;
+
     };
     ws.onmessage = (e) => {
       // a message was received
       console.log(e.data);
+      this.changeUniform({uniformName:"iExposure"},0.599);
     };
 
     ws.onerror = (e) => {

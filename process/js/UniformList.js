@@ -1,9 +1,4 @@
 var React = require('react');
-// Slider doesn't show up...     "rc-slider": "^5.4.0",
-// require('rc-slider/assets/index.css');
-// var Slider = require('rc-slider');
-//<Slider min={this.props.singleItem.uniformMinValue} max={this.props.singleItem.uniformMaxValue} onChange={this.handleSliderChange} />
-
 
 var UniformList = React.createClass({
   getInitialState: function() {
@@ -11,6 +6,13 @@ var UniformList = React.createClass({
       value: this.props.singleItem.uniformValue
     } //return
   }, //getInitialState
+  componentDidMount: function() {
+    var ctrl = document.getElementById("iRedMultiplier");
+    /*ctrl.on('*', function(data){
+      console.log('iRedMultiplier' + event.target.value);
+      ws.send('{"params" :[{"name" : 14,"value" :'+data.value+"}]}");
+});*/
+  },
   handleReset: function() {
     this.props.onReset(this.props.whichUniform)
   },
@@ -19,16 +21,23 @@ var UniformList = React.createClass({
   },
   handleChange: function(event) {
     this.setState({value: event.target.value});
+    console.log('handleChange' + event.target.value);
     this.props.onChange(this.props.whichUniform, this.state.value);
   },
   render: function() {
     return(
       <li className="uniform-info media-body">
-        <div className="uniform-head">
+        <div className="uniform-head" className="col-xs-12">
           <button className="btn btn-danger" onClick={this.handleReset}></button>
           <span className="uniform-name">{this.props.singleItem.uniformName}</span>
           <span className="uniform-name"> min:{this.props.singleItem.uniformMinValue}</span>
           <span className="uniform-name"> max:{this.props.singleItem.uniformMaxValue}</span>
+          <canvas id={this.props.singleItem.uniformName} 
+            label={this.props.singleItem.uniformName} 
+            data-nx='dial'
+            min={this.props.singleItem.uniformMinValue} 
+            max={this.props.singleItem.uniformMaxValue}>
+          </canvas>
         </div>
         <div className="uniform-body">
           <span className="uniform-name">{this.props.singleItem.uniformValue}</span>

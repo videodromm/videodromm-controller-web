@@ -14,5 +14,29 @@
         "uniformMinValue": 0.0,
         "uniformMaxValue": 3.0,
        "defaultValue": 1.0
+    },
+    {
+        "uniformName": "iRedMultiplier",
+        "uniformInfo": "Red Multiplier",
+        "uniformValue": 1.0,
+        "uniformMinValue": 0.0,
+        "uniformMaxValue": 3.0,
+       "defaultValue": 1.0
+    },
+    {
+        "uniformName": "iGreenMultiplier",
+        "uniformInfo": "Green Multiplier",
+        "uniformValue": 1.0,
+        "uniformMinValue": 0.0,
+        "uniformMaxValue": 3.0,
+       "defaultValue": 1.0
+    },
+    {
+        "uniformName": "iBlueMultiplier",
+        "uniformInfo": "Blue Multiplier",
+        "uniformValue": 1.0,
+        "uniformMinValue": 0.0,
+        "uniformMaxValue": 3.0,
+       "defaultValue": 1.0
     }
 ]

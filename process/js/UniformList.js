@@ -30,7 +30,7 @@ var UniformList = React.createClass({
           <span className="uniform-name">{this.props.singleItem.uniformName}</span>
           
           <canvas id={this.props.singleItem.uniformName} 
-            label={this.props.singleItem.uniformName} 
+            label={this.props.singleItem.uniformInfo} 
             data-nx={this.props.singleItem.widget}
             min={this.props.singleItem.uniformMinValue} 
             max={this.props.singleItem.uniformMaxValue}>

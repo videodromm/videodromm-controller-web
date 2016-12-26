@@ -28,9 +28,9 @@ var MainInterface = React.createClass({
       for (var key in nx.widgets) {
         nx.widgets[key].on('*', function(data) {
           var d = document.getElementById("tester");
-          d.innerHTML = data.value ;
+          d.innerHTML = key + " " + data.value + " " + data;
         })
-      }
+      };
 
       //iZoom.animate("bounce"); 
       iZoom.on('*', function(data){

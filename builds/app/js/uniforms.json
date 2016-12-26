@@ -1,7 +1,7 @@
 [
     {
         "uniformName": "iZoom",
-        "uniformInfo": "zoom level",
+        "uniformInfo": "zoom",
         "uniformValue": -2.5,
         "uniformMinValue": -3.0,
         "uniformMaxValue": 3.0,
@@ -10,7 +10,7 @@
     },
     {
         "uniformName": "iExposure",
-        "uniformInfo": "exposure",
+        "uniformInfo": "expo",
         "uniformValue": 1.5,
         "uniformMinValue": 0.0,
         "uniformMaxValue": 3.0,
@@ -19,7 +19,7 @@
     },
     {
         "uniformName": "iRedMultiplier",
-        "uniformInfo": "Red Multiplier",
+        "uniformInfo": "red x",
         "uniformValue": 1.0,
         "uniformMinValue": 0.0,
         "uniformMaxValue": 3.0,
@@ -28,7 +28,7 @@
     },
     {
         "uniformName": "iGreenMultiplier",
-        "uniformInfo": "Green Multiplier",
+        "uniformInfo": "green x",
         "uniformValue": 1.0,
         "uniformMinValue": 0.0,
         "uniformMaxValue": 3.0,
@@ -37,7 +37,7 @@
     },
     {
         "uniformName": "iBlueMultiplier",
-        "uniformInfo": "Blue Multiplier",
+        "uniformInfo": "blue x",
         "uniformValue": 1.0,
         "uniformMinValue": 0.0,
         "uniformMaxValue": 3.0,

@@ -23,36 +23,42 @@ var MainInterface = React.createClass({
     nx.onload = function(){
      console.log('nx onload'+ ws);
      nx.colorize("#220022");
-     nx.colorize("border", "#FF0000");
-     nx.colorize("border", "#660077");
+     nx.colorize("border", "#BBAAFF");
+     nx.colorize("fill", "#BBAAFF");
+
+     //iZoom.animate("bounce"); 
      iZoom.on('*', function(data){
        console.log('iZoom ' + ws + ' val:' + data.value);
        ws.send('{"params" :[{"name" : 12,"value" :'+data.value+"}]}");
-      });
-     iZoom1.on('*', function(data){
-       console.log('iZoom1'+ ws + ' val:' + data.value);
-        ws.send('{"params" :[{"name" : 12,"value" :'+data.value+"}]}");
       });
       iExposure.on('*', function(data){
        console.log('iExposure'+ ws + ' val:' + data.value);
         ws.send('{"params" :[{"name" : 14,"value" :'+data.value+"}]}");
       });
-      iExposure1.on('*', function(data){
-       console.log('iExposure1'+ ws + ' val:' + data.value);
-        ws.send('{"params" :[{"name" : 14,"value" :'+data.value+"}]}");
+     iRedMultiplier.on('*', function(data){
+       console.log('iRedMultiplier'+ ws + ' val:' + data.value);
+        ws.send('{"params" :[{"name" : 5,"value" :'+data.value+"}]}");
+      });
+     iGreenMultiplier.on('*', function(data){
+       console.log('iGreenMultiplier'+ ws + ' val:' + data.value);
+        ws.send('{"params" :[{"name" : 6,"value" :'+data.value+"}]}");
+      });
+     iBlueMultiplier.on('*', function(data){
+       console.log('iBlueMultiplier'+ ws + ' val:' + data.value);
+        ws.send('{"params" :[{"name" : 7,"value" :'+data.value+"}]}");
       });
    };
     ws.onopen = () => {
       // connection opened
       ws.send('controller ready'); // send a message
-      console.log('ws.onopen' + nx + "  " + iExposure1);
-      iExposure.val = 0.5;
+      //console.log('ws.onopen' + nx + "  " + iExposure1);
+      //iExposure.val = 0.5;
 
     };
     ws.onmessage = (e) => {
       // a message was received
       console.log(e.data);
-      this.changeUniform({uniformName:"iExposure"},0.599);
+      //this.changeUniform({uniformName:"iExposure"},0.599);
     };
 
     ws.onerror = (e) => {

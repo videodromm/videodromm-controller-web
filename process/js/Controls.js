@@ -16,7 +16,7 @@ class Controls extends React.Component {
   render(){
     return(
       <div className='controls'>
- 	
+ 	      <canvas id="iColor" data-nx="colors"></canvas>
       </div>
     );
   }

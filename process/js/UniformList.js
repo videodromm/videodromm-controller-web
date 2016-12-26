@@ -8,13 +8,7 @@ var UniformList = React.createClass({
   }, //getInitialState
   componentDidMount: function() {
     var ctrl = document.getElementById("iRedMultiplier");
-    /*ctrl.on('*', function(data){
-      console.log('iRedMultiplier' + event.target.value);
-      ws.send('{"params" :[{"name" : 14,"value" :'+data.value+"}]}");
-      <span className="uniform-name">{this.props.singleItem.uniformValue}</span>
-      <span className="uniform-name"> min:{this.props.singleItem.uniformMinValue}</span>
-          <span className="uniform-name"> max:{this.props.singleItem.uniformMaxValue}</span>
-});*/
+
   },
   handleReset: function() {
     this.props.onReset(this.props.whichUniform)
@@ -37,7 +31,7 @@ var UniformList = React.createClass({
           
           <canvas id={this.props.singleItem.uniformName} 
             label={this.props.singleItem.uniformName} 
-            data-nx='dial'
+            data-nx={this.props.singleItem.widget}
             min={this.props.singleItem.uniformMinValue} 
             max={this.props.singleItem.uniformMaxValue}>
           </canvas>

@@ -5,8 +5,8 @@ var _ = require('lodash'); // useless for now
 var Keyboard = require('./Keyboard');
 var Controls = require('./Controls');
 var UniformList = require('./UniformList');
- 
-var ws = new WebSocket('ws://13.93.86.117:8088');
+
+var ws = new WebSocket('wss://13.93.86.117:8088');
 
 var MainInterface = React.createClass({
   getInitialState: function() {
@@ -23,8 +23,8 @@ var MainInterface = React.createClass({
     nx.onload = function(){
       console.log('nx onload'+ ws);
       /**
-       * 
-       * 
+       *
+       *
        for (var key in nx.widgets) {
 					with (nx.widgets[key]) {
 						on('*', function(data) {
@@ -32,7 +32,7 @@ var MainInterface = React.createClass({
 							console.log(canvasID, data)
 						})
 					}
-				} 
+				}
 			    nx.colorize("accent", "#347");
 			    nx.colorize("border", "#e4e4e4");
 			    nx.colorize("fill", "#eee");
@@ -48,7 +48,7 @@ var MainInterface = React.createClass({
         })
       };
 
-      //iZoom.animate("bounce"); 
+      //iZoom.animate("bounce");
       iZoom.on('*', function(data){
         console.log('iZoom ' + ws + ' val:' + data.value);
         window.socket.emit('params', '{"params" :[{"name" : 12,"value" :'+data.value+"}]}");
@@ -118,7 +118,7 @@ var MainInterface = React.createClass({
     }.bind(this)); //filteredUniforms.map
     return (
       <div className="interface">
-        <h1>{this.state.title}</h1>       
+        <h1>{this.state.title}</h1>
         <ul className="item-list media-list">{filteredUniforms}</ul>
         <Controls />
         <div id="tester">

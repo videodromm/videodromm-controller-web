@@ -25,8 +25,8 @@ gulp.task('deploy', function () {
     .pipe(conn.dest(remotePath));
 });
 
-var src = './process',
-    app = './builds/app';
+var src = './src',
+    app = './public';
 
 gulp.task('js', function() {
   return gulp.src( src + '/js/app.js' )

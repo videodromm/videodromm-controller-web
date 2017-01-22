@@ -22,6 +22,21 @@ var MainInterface = React.createClass({
 
     nx.onload = function(){
       console.log('nx onload'+ ws);
+      /**
+       * 
+       * 
+       for (var key in nx.widgets) {
+					with (nx.widgets[key]) {
+						on('*', function(data) {
+							// code that will be executed
+							console.log(canvasID, data)
+						})
+					}
+				} 
+			    nx.colorize("accent", "#347");
+			    nx.colorize("border", "#e4e4e4");
+			    nx.colorize("fill", "#eee");
+       */
       nx.colorize("#220022");
       nx.colorize("border", "#BBAAFF");
       nx.colorize("fill", "#BBAAFF");
@@ -60,28 +75,6 @@ var MainInterface = React.createClass({
           //ws.send('{"params" :[{"name" : 1,"value" :'+data.value+"}]}");
         });
    };
-    /*ws.onopen = () => {
-      // connection opened
-      ws.send('controller ready'); // send a message
-      //console.log('ws.onopen' + nx + "  " + iExposure1);
-      //iExposure.val = 0.5;
-
-    };
-    ws.onmessage = (e) => {
-      // a message was received
-      console.log(e.data);
-      //this.changeUniform({uniformName:"iExposure"},0.599);
-    };
-
-    ws.onerror = (e) => {
-      // an error occurred
-      console.log(e.message);
-    };
-
-    ws.onclose = (e) => {
-      // connection closed
-      console.log(e.code, e.reason);
-    };*/
     this.serverRequest = $.get('./js/uniforms.json', function(result) {
       var tempUniforms = result;
       this.setState({

@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/videodromm/videodromm-controller-web.git"
   },
-    "author": {
+  "author": {
     "name": "Bruce Lane,Josep Arpi",
     "email": "bruce@batchass.fr,josep.arpi@gmail.com"
   },
@@ -19,6 +19,7 @@
     "codemirror": "5.8.0",
     "mocha": "^3.1.2",
     "nodemon": "^1.11.0",
+    "react-router": "^3.0.0",
     "uuid": "^2.0.3",
     "winston": "^2.2.0",
     "ws": "^1.1.1",
@@ -28,11 +29,14 @@
     "gulp": "^3.8.8",
     "gulp-browserify": "^0.5.1",
     "gulp-react": "^3.1.0",
+    "gulp-util": "^3.0.8",
     "gulp-webserver": "^0.8.8",
     "jshint-stylish": "^1.0.0",
     "lodash": "^4.13.1",
+    "minimist": "^1.2.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "reactify": "^1.1.1"
+    "reactify": "^1.1.1",
+    "vinyl-ftp": "^0.5.0"
   }
 }

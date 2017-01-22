@@ -1,7 +1,30 @@
-var gulp = require('gulp'),
-    browserify = require('gulp-browserify'),
-    webserver = require('gulp-webserver');
-    
+var gulp = require('gulp');
+var browserify = require('gulp-browserify');
+var webserver = require('gulp-webserver');
+var minimist = require('minimist');
+var ftp = require('vinyl-ftp');
+var gutil = require('gulp-util');
+//var sass = require('gulp-sass');
+
+var args = minimist(process.argv.slice(2));
+
+gulp.task('deploy', function () {
+  var remotePath = '/videodromm.com/';
+  var conn = ftp.create({
+    host: 'home146246455.1and1-data.host',
+    user: args.user,
+    password: args.password,
+    log: gutil.log
+  });
+  gulp.src([
+      './**/*.*',
+      '!./.*',
+      '!./node_modules/**/*.*'
+    ])
+    .pipe(conn.newer(remotePath))
+    .pipe(conn.dest(remotePath));
+});
+
 var src = './process',
     app = './builds/app';
 

@@ -1,6 +1,6 @@
 {
   "name": "videodromm-controller-web",
-  "version": "0.0.1",
+  "version": "0.1.20171211",
   "description": "Web controller for uniform variables, made with react.js",
   "repository": {
     "type": "git",

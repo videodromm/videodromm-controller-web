@@ -2,8 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var _ = require('lodash'); // useless for now
 
-var Keyboard = require('./Keyboard');
-var Controls = require('./Controls');
+//var Controls = require('./Controls');
 var UniformList = require('./UniformList');
 
 var MainInterface = React.createClass({
@@ -17,9 +16,8 @@ var MainInterface = React.createClass({
     } //return
   }, //getInitialState
   componentDidMount: function () {
-    //this.changeHost = this.changeHost.bind(this);
-    //this.changePort = this.changePort.bind(this);
-    var dial12 = Nexus.Add.Dial('#instrument', {
+    window.socket = new ws('ws://' + this.state.wshost + ':' + this.state.wsport);
+    var dial12 = Nexus.Add.Dial('#dial12', {
       'size': [100, 100],
       'interaction': 'radial', // "radial", "vertical", or "horizontal"
       'mode': 'relative', // "absolute" or "relative"
@@ -33,11 +31,11 @@ var MainInterface = React.createClass({
     dial12.colorize("fill", "#333")
     dial12.on('change', function (data) {
       // v holds the new numeric value of the dial
-      console.log('iZoom ' + JSON.stringify(ws) + ' val:' + JSON.stringify(data));
-      window.socket.send('{"params" :[{"name" : 12,"value" :' + data + "}]}");
+      console.log('iZoom  val:' + JSON.stringify(data));
+      if (window.socket) window.socket.send('{"params" :[{"name" : 12,"value" :' + data + "}]}");
       //ws.send('{"params" :[{"name" : 6,"value" :'+data+"}]}");
     });
-    var dial14 = Nexus.Add.Dial('#instrument', {
+    var dial14 = Nexus.Add.Dial('#dial14', {
       'size': [100, 100],
       'interaction': 'radial', // "radial", "vertical", or "horizontal"
       'mode': 'relative', // "absolute" or "relative"
@@ -51,8 +49,8 @@ var MainInterface = React.createClass({
     dial14.colorize("fill", "#333")
     dial14.on('change', function (data) {
       // v holds the new numeric value of the dial
-      console.log('iZoom ' + JSON.stringify(ws) + ' val:' + JSON.stringify(data));
-      window.socket.send('{"params" :[{"name" : 14,"value" :' + data + "}]}");
+      console.log('14  val:' + JSON.stringify(data));
+      if (window.socket) window.socket.send('{"params" :[{"name" : 14,"value" :' + data + "}]}");
     });
 
     var slider = Nexus.Add.Slider('#instrument', {
@@ -65,40 +63,17 @@ var MainInterface = React.createClass({
     });
     slider.on('change', function (data) {
       // v holds the new numeric value of the dial
-      console.log('iZoom ' + JSON.stringify(ws) + ' val:' + JSON.stringify(data));
-      window.socket.send('{"params" :[{"name" : 13,"value" :' + data + "}]}");
+      console.log('13 val:' + JSON.stringify(data));
+      if (window.socket) window.socket.send('{"params" :[{"name" : 13,"value" :' + data + "}]}");
     });
-    /*var toggle = Nexus.Add.Toggle('#target', {
-      'size': [40, 20],
-      'state': false
-    });
-    toggle.on('change', function (v) {
-      console.log(v);
-    })*/
-    //nx;
-    /*console.log('nx' + nx);
-
-    nx.onload = function(){
-      console.log('nx onload'+ ws);*/
-    /**
-     *
-     *
-     for (var key in nx.widgets) {
-        with (nx.widgets[key]) {
-          on('*', function(data) {
-            // code that will be executed
-            console.log(canvasID, data)
-          })
-        }
+    /*
+    for (var key in nx.widgets) {
+      with (nx.widgets[key]) {
+        on('*', function(data) {
+          // code that will be executed
+          console.log(canvasID, data)
+        })
       }
-        nx.colorize("accent", "#347");
-        nx.colorize("border", "#e4e4e4");
-        nx.colorize("fill", "#eee");
-     */
-    /* nx.colorize("#220022");
-     nx.colorize("border", "#BBAAFF");
-     nx.colorize("fill", "#BBAAFF");
-     for (var key in nx.widgets) {
        nx.widgets[key].on('*', function(data) {
          var d = document.getElementById("tester");
          d.innerHTML = key + " " + data.value;
@@ -106,38 +81,13 @@ var MainInterface = React.createClass({
        })
      };
 
-     //iZoom.animate("bounce");
-     iZoom.on('*', function(data){
-       console.log('iZoom ' + ws + ' val:' + data.value);
-       window.socket.emit('params', '{"params" :[{"name" : 12,"value" :'+data.value+"}]}");
-       //ws.send('{"params" :[{"name" : 12,"value" :'+data.value+"}]}");
-      });
-      iExposure.on('*', function(data){
-        console.log('iExposure'+ ws + ' val:' + data.value);
-        //ws.send('{"params" :[{"name" : 14,"value" :'+data.value+"}]}");
-      });
-      iRedMultiplier.on('*', function(data){
-        console.log('iRedMultiplier'+ ws + ' val:' + data.value);
-        //ws.send('{"params" :[{"name" : 5,"value" :'+data.value+"}]}");
-      });
-      iGreenMultiplier.on('*', function(data){
-         console.log('iGreenMultiplier'+ ws + ' val:' + data.value);
-         //ws.send('{"params" :[{"name" : 6,"value" :'+data.value+"}]}");
-       });
-       iBlueMultiplier.on('*', function(data){
-         console.log('iBlueMultiplier'+ ws + ' val:' + data.value);
-         //ws.send('{"params" :[{"name" : 7,"value" :'+data.value+"}]}");
-       });
-       iColor.on('*', function(data) {
-         console.log('iColor:' + data.value);
-         //ws.send('{"params" :[{"name" : 1,"value" :'+data.value+"}]}");
-       });
  }; */
     this.serverRequest = $.get('./js/uniforms.json', function (result) {
       var tempUniforms = result;
       this.setState({
         uniforms: tempUniforms
       }); //setState
+      console.log('uniforms:' + JSON.stringify(this.state.uniforms));
     }.bind(this));
   }, //componentDidMount
   componentWillUnmount: function () {
@@ -163,21 +113,6 @@ var MainInterface = React.createClass({
       }); //setState
     } //if
   }, //changeUniform
-  submit: function (e) {
-    e.preventDefault();
-    console.log('h:' + this.state.wshost + ' p:' + this.state.wsport);
-    window.socket = new WebSocket('ws://' + this.state.wshost + ':' + this.state.wsport);
-  },
-  changeHost: function (e) {
-    console.log('changeHost:' + this.state.wshost + 'v:' + e.target.value);
-    this.setState({ wshost: e.target.value });
-    console.log('h:' + this.state.wshost);
-  },
-  changePort: function (e) {
-    console.log('changePort:' + this.state.wsport + 'v:' + e.target.value);
-    this.setState({ wsport: e.target.value });
-    console.log('h:' + this.state.wsport);
-  },
   render: function () {
     var filteredUniforms = this.state.uniforms;
     filteredUniforms = filteredUniforms.map(function (item, index) {
@@ -191,41 +126,15 @@ var MainInterface = React.createClass({
     }.bind(this)); //filteredUniforms.map
     return (
       <div className="interface">
-        <h1>{this.state.title}</h1>
-        <div id="instrument"></div>
-        <ul className="item-list media-list">{filteredUniforms}</ul>
-        <Controls />
-        <div id="tester">
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col s12 m5">
-              <form onSubmit={this.submit}>
-                <div className='form-group'>
-                  <label htmlFor="host">Host</label>
-                  <input id="host"
-                    type="text"
-                    required
-                    defaultValue={this.state.wshost}
-                    onChange={this.changeHost}
-                  />
-                </div>
-                <div className='form-group'>
-                  <label htmlFor="port">Port</label>
-                  <input id="port"
-                    type="number"
-                    required
-                    defaultValue={this.state.wsport}
-                    onChange={this.changePort}
-                  />
-                </div>
-                <div className="form-group">
-                  <button className="btn">Connect</button>
-                </div>
-              </form>
-            </div>
+        <div className="row">
+          <div className="col s12 m5">
+            <div id="dial12"></div>
+            <div id="dial14"></div>
+            <div id="instrument"></div>
           </div>
         </div>
+        <ul className="item-list media-list">{filteredUniforms}</ul>
+        {/* <Controls /> */}
       </div>
     ) //return
   } //render

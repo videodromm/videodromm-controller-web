@@ -1,6 +1,7 @@
 [
     {
         "uniformName": "iZoom",
+        "uniformIndex": 12,
         "uniformInfo": "zoom",
         "uniformValue": -2.5,
         "uniformMinValue": -3.0,
@@ -10,38 +11,42 @@
     },
     {
         "uniformName": "iExposure",
+        "uniformIndex": 14,
         "uniformInfo": "expo",
         "uniformValue": 1.5,
         "uniformMinValue": 0.0,
         "uniformMaxValue": 3.0,
-       "defaultValue": 1.0,
+        "defaultValue": 1.0,
         "widget": "dial"
     },
     {
         "uniformName": "iRedMultiplier",
+        "uniformIndex": 5,
         "uniformInfo": "red x",
         "uniformValue": 1.0,
         "uniformMinValue": 0.0,
         "uniformMaxValue": 3.0,
-       "defaultValue": 1.0,
+        "defaultValue": 1.0,
         "widget": "slider"
     },
     {
         "uniformName": "iGreenMultiplier",
+        "uniformIndex": 6,
         "uniformInfo": "green x",
         "uniformValue": 1.0,
         "uniformMinValue": 0.0,
         "uniformMaxValue": 3.0,
-       "defaultValue": 1.0,
+        "defaultValue": 1.0,
         "widget": "slider"
     },
     {
         "uniformName": "iBlueMultiplier",
+        "uniformIndex": 7,
         "uniformInfo": "blue x",
         "uniformValue": 1.0,
         "uniformMinValue": 0.0,
         "uniformMaxValue": 3.0,
-       "defaultValue": 1.0,
+        "defaultValue": 1.0,
         "widget": "slider"
     }
 ]

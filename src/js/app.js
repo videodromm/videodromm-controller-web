@@ -17,7 +17,7 @@ var MainInterface = React.createClass({
   }, //getInitialState
   componentDidMount: function () {
     window.socket = new ws('ws://' + this.state.wshost + ':' + this.state.wsport);
-    var dial12 = Nexus.Add.Dial('#dial12', {
+    var dial12 = Nexus.Add.Dial('#instrument', {
       'size': [100, 100],
       'interaction': 'radial', // "radial", "vertical", or "horizontal"
       'mode': 'relative', // "absolute" or "relative"
@@ -35,7 +35,7 @@ var MainInterface = React.createClass({
       if (window.socket) window.socket.send('{"params" :[{"name" : 12,"value" :' + data + "}]}");
       //ws.send('{"params" :[{"name" : 6,"value" :'+data+"}]}");
     });
-    var dial14 = Nexus.Add.Dial('#dial14', {
+    var dial14 = Nexus.Add.Dial('#instrument', {
       'size': [100, 100],
       'interaction': 'radial', // "radial", "vertical", or "horizontal"
       'mode': 'relative', // "absolute" or "relative"
@@ -87,7 +87,7 @@ var MainInterface = React.createClass({
       this.setState({
         uniforms: tempUniforms
       }); //setState
-      console.log('uniforms:' + JSON.stringify(this.state.uniforms));
+      console.log('uniforms:' + JSON.stringify(this.state.uniforms) );
     }.bind(this));
   }, //componentDidMount
   componentWillUnmount: function () {
@@ -128,8 +128,6 @@ var MainInterface = React.createClass({
       <div className="interface">
         <div className="row">
           <div className="col s12 m5">
-            <div id="dial12"></div>
-            <div id="dial14"></div>
             <div id="instrument"></div>
           </div>
         </div>

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Videodromm</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+  <script src='js/nexusUI.js'></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -51,27 +52,44 @@
     </nav>
   </header>
 
-  <div class="main">
-    <div class="page" id="uniformspage">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <div id="uniforms"></div>
-          </div>
-        </div>
+  <div className="row">
+      <div className="col col-sm">
+          <div id="target"></div>
       </div>
-      <!-- container -->
+      <div className="col col-sm">
+        <div id="dial13"></div>
+      </div>
+      <div className="col col-sm">
+        <div id="dial14"></div>
+      </div>
     </div>
-    <!-- uniforms page -->
+  <div id="all-interfaces">
+    <div nexus-ui="dial"></div>
+    <div nexus-ui="slider"></div>
+    <div nexus-ui="toggle" id="toggle"></div>
+    <div nexus-ui="position" id="position"></div>
+    <div nexus-ui="button" id="button"></div>
+    <div nexus-ui="textbutton" id="textbutton"></div>
+    <div nexus-ui="radiobutton" id="radiobutton"></div>
+    <div nexus-ui="number" id="number"></div>
+    <div nexus-ui="select" id="select"></div>
+    <div nexus-ui="piano" id="piano"></div>
+    <div nexus-ui="sequencer" id="sequencer"></div>
+    <div nexus-ui="pan2d" id="pan2D"></div>
+    <div nexus-ui="tilt" id="tilt"></div>
+    <div nexus-ui="multislider"></div>
+    <div nexus-ui="pan" id="pan"></div>
+    <div nexus-ui="envelope" id="envelope"></div>
+    <div nexus-ui="oscilloscope" id="oscilloscope"></div>
+    <div nexus-ui="meter" id="meter"></div>
+    <div nexus-ui="spectrogram" id="spectrogram"></div>
   </div>
-  <!-- main -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="js/websocket-lib/ws.js"></script>
-  <script src='js/nexusUI.js'></script>
-  <script src="js/app.js"></script>
-  <!-- <script type="text/javascript" src="js/socket.js"></script> -->
+
+  <script src="js/nex.js"></script>
 
   <!-- Google analytics -->
   <script>

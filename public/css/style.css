@@ -133,3 +133,23 @@ footer .navbar-nav>li a {
 .item-list .uniform-delete {
   font-size: 1.2em;
 }
+/**  nexus-ui **/
+#all-interfaces {
+  width:500px;
+  margin:20px auto;
+  font-family:helvetica, sans-serif;
+}
+#target {
+  width:500px;
+  height:500px;
+  border:dashed 2px #333;
+}
+[nexus-ui] {
+  margin:10px;
+  float:left;
+}
+#synth1 {
+  margin: 50px auto;
+  display:block;
+  width: 300px;
+}

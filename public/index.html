@@ -54,10 +54,26 @@
       <!-- container -->
     </nav>
   </header>
-
+<!--   <div>
+    <form id="wsform" class="ui form">
+      <div class="field">
+        <label>ip</label>
+        <input name="ip">
+      </div>
+      <div class="field">
+        <label>port</label>
+        <input name="port">
+      </div>
+      <button class="ui button" type="submit">Submit</button>
+    </form>
+    <div id="message"></div>
+  </div>-->
   <div className="row">
     <div className="col col-sm">
-      <div id="target"></div>
+      <div id="dials"></div>
+    </div>
+    <div className="col col-sm">
+      <div id="buttons"></div>
     </div>
     <div className="col col-sm">
       <div id="dial13"></div>
@@ -66,6 +82,8 @@
       <div id="dial14"></div>
     </div>
   </div>
+
+ 
   <div id="all-interfaces">
     <div nexus-ui="dial"></div>
     <div nexus-ui="slider"></div>

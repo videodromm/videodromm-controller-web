@@ -11,9 +11,33 @@ var dial12 = new Nexus.Dial("#dial12");
 var dial13 = new Nexus.Dial("#dial13");
 var dial14 = new Nexus.Dial("#dial14");*/
 var dialArray = [];
+var buttonsArray = [];
 for (var i = 0; i < 16; i++) {
-  dialArray.push(new Nexus.Add.Dial('#target', {
+  // method 1
+  /* var dial = new Nexus.Add.Dial('#dials')
+  dial.parent.style.float = "left"
+  dial.value = 0.5
+  dial.on('change', function (index,data) {
+    console.log( '{"params" :[{"name" : ' + index + ',"value" :' + data + "}]}" );
+  }.bind(dial,i));
+  dialArray.push(dial) */
+  // method 2, recommended
+  var dial = new Nexus.Add.Dial('#dials')
+  dial.parent.style.float = "left"
+  dial.value = 0.5
+  dial.index = i
+  dial.on('change', function (data) {
+    console.log( '{"params" :[{"name" : ' + this.index + ',"value" :' + data + "}]}" );
+  });
+  dialArray.push(dial)
+
+  dialArray.push(new Nexus.Add.Dial('#dials', {
     size: [100, 100],
+    value: i * 0.1
+  }));  
+  buttonsArray.push(new Nexus.Add.Button('#dials', {
+    size: [10, 10],
+    mode: 'aftertouch',
     value: i * 0.1
   }));
 }
@@ -167,4 +191,15 @@ dial14.on('change', function (data) {
       console.log('13 val:' + JSON.stringify(data));
       if (window.socket) window.socket.send('{"params" :[{"name" : 13,"value" :' + data + "}]}");
     });
-*/
+
+var form = document.getElementById('wsform');
+var message = document.getElementById("message");
+var ip = document.getElementById("ip");
+var port = document.getElementById("port");
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  //window.socket = new ws('ws://' + ip + ':' + port);
+  message.innerHTML = "Connected to " + ip + ":" + port;
+  delete form;
+});*/
